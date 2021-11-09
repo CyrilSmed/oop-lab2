@@ -6,9 +6,9 @@
 class Vector3D
 {
 private:
-    float x;
-    float y;
-    float z;
+    int x;
+    int y;
+    int z;
 
 public:
     Vector3D()
@@ -16,7 +16,7 @@ public:
         printf("Debug: Vectro3D - call of default constructor\n");
         x = y = z = 0;
     }
-    Vector3D(float x, float y, float z)
+    Vector3D(int x, int y, int z)
     {
         printf("Debug: Vectro3D - call of constructor with parameters\n");
         this->x = x;
@@ -35,42 +35,65 @@ public:
         printf("Debug: Vectro3D - call of destructor\n");
     }
 
-    void setX(float x)
+    void setX(int x)
     {
+        printf("Debug: Vectro3D - setX()\n");
         this->x = x;
     }
-    void setY(float y)
+    void setY(int y)
     {
+        printf("Debug: Vectro3D - setY()\n");
         this->y = y;
     }
-    void setZ(float z)
+    void setZ(int z)
     {
+        printf("Debug: Vectro3D - setZ()\n");
         this->z = z;
     }
 
     void printDescription()
     {
-        printf("(x = %f; y = %f, z = %f)", x, y, z);
+        printf("(%d, %d, %d)", x, y, z);
     }
-    float dotProduct(const Vector3D* vector)
+    int dotProduct(const Vector3D* vector)
     {
-        printf("Debug: Vectro3D - call of dotProduct method\n");
-        float product = x * vector->x + y * vector->y + z * vector->z;
+        printf("Debug: Vectro3D - dotProduct()\n");
+        int product = x * vector->x + y * vector->y + z * vector->z;
         return product;
     }
-    Vector3D crossProduct(const Vector3D* vector)
+    Vector3D* crossProduct(const Vector3D* vector)
     {
-        printf("Debug: Vectro3D - call of crossProduct method\n");
-        Vector3D product = Vector3D(y * vector->z - z * vector->y,
-                                    z * vector->x - x * vector->z,
-                                    x * vector->y - y * vector->x);
+        printf("Debug: Vectro3D - crossProduct()\n");
+        Vector3D* product = new Vector3D(y * vector->z - z * vector->y,
+                                         z * vector->x - x * vector->z,
+                                         x * vector->y - y * vector->x);
         return product;
     }
 };
 
 int main()
 {
-    Vector3D a = Vector3D(1, 3, 2);
-    Vector3D b = Vector3D(a);
+    Vector3D* a = new Vector3D(1, 3, 2);
+    Vector3D* b = new Vector3D(*a);
+    b->setY(-1);
+    printf("\n");
 
+    printf("Vector a: ");
+    a->printDescription();
+    printf("\n");
+    printf("Vector b: ");
+    b->printDescription();
+    printf("\n\n");
+
+    int dotProduct = a->dotProduct(b);
+    printf("Dot product of vectors a and b: %d\n\n", dotProduct);
+
+    Vector3D* crossProduct = a->crossProduct(b);
+    printf("Cross product of vectors a and b: ");
+    crossProduct->printDescription();
+    printf("\n\n");
+
+    delete a;
+    delete b;
+    delete crossProduct;
 }

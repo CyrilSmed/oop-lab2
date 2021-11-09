@@ -1,5 +1,2 @@
 ﻿  oop-lab2.cpp
-D:\Program Files\YandexDisk\Downloads\Work\.Весенний семестр 2021\ООП\Лабораторные\Лабораторная 2\oop-lab2\oop-lab2.cpp(22,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Program Files\YandexDisk\Downloads\Work\.Весенний семестр 2021\ООП\Лабораторные\Лабораторная 2\oop-lab2\oop-lab2.cpp(23,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Program Files\YandexDisk\Downloads\Work\.Весенний семестр 2021\ООП\Лабораторные\Лабораторная 2\oop-lab2\oop-lab2.cpp(24,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  oop-lab2.vcxproj -> D:\Program Files\YandexDisk\Downloads\Work\.Весенний семестр 2021\ООП\Лабораторные\Лабораторная 2\oop-lab2\x64\Debug\oop-lab2.exe
+  oop-lab2.vcxproj -> D:\Program Files\YandexDisk\Sync\YandexDisk\Work\Spring Semester 2021\Object-oriented programming\oop-lab2\x64\Debug\oop-lab2.exe
