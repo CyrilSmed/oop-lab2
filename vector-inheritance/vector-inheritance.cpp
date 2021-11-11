@@ -142,6 +142,12 @@ public:
     }
 };
 
+class PointlessVector3D : public Vector3D
+{
+public:
+    bool isPointless = true;
+};
+
 int main()
 {
     Vector* vectors[3] = {
@@ -161,4 +167,13 @@ int main()
     {
         delete vectors[i];
     }
+    printf("\n\n");
+
+    PointlessVector3D vector = PointlessVector3D();
+    printf("Pointless vector is ");
+    if(vector.isPointless)
+        printf("pointless\n");
+    else
+        printf("pointy\n");
+
 }

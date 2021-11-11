@@ -29,7 +29,7 @@ public:
     {
         printf("Debug: Grinder::setGrindConsistencyLevel()\n");
         if (level <= 0) grindConsistencyLevel = 1;
-        else if (level > 5) grindConsistencyLevel = 5;
+        else if (level > 10) grindConsistencyLevel = 10;
         else grindConsistencyLevel = level;
     }
     int getGrindConsistencyLevel()
@@ -98,7 +98,7 @@ public:
 
 int main()
 {
-    CoffeeMachine* coffeeMachine = new CoffeeMachine(5);
+    CoffeeMachine* coffeeMachine = new CoffeeMachine(8);
     coffeeMachine->makeCoffee();
     delete coffeeMachine;
 }
