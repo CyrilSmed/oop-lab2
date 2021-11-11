@@ -71,27 +71,25 @@ public:
 
 int main()
 {
-    Vector3D* a = new Vector3D(1, 3, 2);
-    Vector3D* b = new Vector3D(*a);
-    b->setY(-1);
+    Vector3D a = Vector3D(1, 3, 2);
+    Vector3D b = Vector3D(a);
+    b.setY(-1);
     printf("\n");
 
     printf("Vector a: ");
-    a->printDescription();
+    a.printDescription();
     printf("\n");
     printf("Vector b: ");
-    b->printDescription();
+    b.printDescription();
     printf("\n\n");
 
-    int dotProduct = a->dotProduct(b);
+    int dotProduct = a.dotProduct(&b);
     printf("Dot product of vectors a and b: %d\n\n", dotProduct);
 
-    Vector3D* crossProduct = a->crossProduct(b);
+    Vector3D* crossProduct = a.crossProduct(&b);
     printf("Cross product of vectors a and b: ");
     crossProduct->printDescription();
     printf("\n\n");
 
-    delete a;
-    delete b;
     delete crossProduct;
 }

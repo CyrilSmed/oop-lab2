@@ -6,10 +6,15 @@ using namespace std;
 class Vector
 {
 public:
-    virtual void printVectorDescription() 
+    Vector()
     {
-        printf("Debug: Vector::printDescription()\n");
+        printf("Debug: Vector - default constructor\n");
     }
+    virtual ~Vector()
+    {
+        printf("Debug: Vector - destructor\n");
+    }
+    virtual void printVectorDescription() = 0;
 };
 
 class Vector3D : public Vector
@@ -39,7 +44,7 @@ public:
         y = vector.y;
         z = vector.z;
     }
-    ~Vector3D()
+    virtual ~Vector3D()
     {
         printf("Debug: Vector3D - destructor\n");
     }
@@ -78,7 +83,7 @@ public:
     void printVectorDescription()
     {
         printf("(%d, %d, %d)\n", x, y, z);
-        printf("Debug: Vector3D::printDescription()\n");
+        printf("Debug: Vector3D::printVectorDescription()\n");
     }
     int dotProduct(const Vector3D* vector);
     Vector3D* crossProduct(const Vector3D* vector);
@@ -101,9 +106,9 @@ Vector3D* Vector3D::crossProduct(const Vector3D* vector)
 
 class LabeledVector3D : public Vector3D
 {
-private:
-    string label = "";
 public:
+    string label = "";
+
     LabeledVector3D() : Vector3D()
     {
         printf("Debug: LabeledVector3D - default constructor\n");
@@ -121,13 +126,14 @@ public:
     }
     ~LabeledVector3D()
     {
-        printf("Debug: Vector - destructor\n");
+        cout << "Debug: LabeledVector3D \"" << label << "\" - destructor" << endl;
     }
+
     void printVectorDescription()
     {
         cout << label << ": ";
         printf("(%d, %d, %d)\n", x, y, z);
-        printf("Debug: LabeledVector3D::printDescription()\n");
+        printf("Debug: LabeledVector3D::printVectorDescription()\n");
     }
 
     string getLabel() const
@@ -143,11 +149,13 @@ int main()
         new LabeledVector3D(2, 6, 4, "Even Vector"),
         new Vector3D()
     };
+    printf("\n");
 
     for (int i = 0; i < sizeof(vectors) / sizeof(vectors[0]); i++)
     {
         vectors[i]->printVectorDescription();
     }
+    printf("\n");
 
     for (int i = 0; i < sizeof(vectors) / sizeof(vectors[0]); i++)
     {
